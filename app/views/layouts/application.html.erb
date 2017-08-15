@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WBHauck</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+<div class="container">
+<nav class="navbar navbar-light bg-light">
+<a class="navbar-brand" href="/">WBHauck</a>
+<a class="nav-item" href="/">Resum&eacute;</a>
+
+
+<ul class="nav">
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Contact</a>
+<div class="dropdown-menu">
+<%= mail_to 'wbhauck@yahoo.com', 'Email', class: "dropdown-item" %>
+<%= link_to 'GitHub', 'https://github.com/wbhauck', class: "dropdown-item", target: '_blank' %>
+<%= link_to 'LinkedIn', 'https://www.linkedin.com/in/billhauck/', class: "dropdown-item", target: '_blank' %>
+<%= link_to 'Twitter', 'https://twitter.com/wbhauck', class: "dropdown-item", target: '_blank' %>
+</div>
+</li>
+</ul>
+
+<a class="nav-item" href="/about">About</a>
+</nav>
+<%= yield %>
+<footer>
+&copy; 2017 William B. Hauck
+</footer>
+</div><!-- class="container" -->
+</body>
+</html>

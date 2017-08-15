@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<div class="blog_title">
+<%= @blog.title %> <% if session[:user_id] == @blog.user_id %> <%= link_to '(Edit)', edit_blog_path(@blog) %><% end %>
+</div>
+
+<div class="blog_description">
+  <%= @blog.description %>
+</div>
+
+<div class="blog_meta">
+  Created by <%= @blog.user.username %>
+</div>
+
+<p>
+  <strong>Public:</strong>
+  <%= @blog.public %>
+</p>
+
+<%= link_to 'Back', blogs_path %>
+
+
+
+
+<% @blog.posts.each do |post| %>
+	<div class="post">
+	<div class="post_title"><%= link_to post.title, blog_post_path(@blog, post) %></div>
+	<div class="post_body"><%= post.body %></div>
+	</div>
+<% end %>

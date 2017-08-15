@@ -1,0 +1,15 @@
+<div class="post_blog_title">
+</div>
+
+<div class="post_title">
+  <%= @post.title %>
+</div>
+
+<div class="post_meta">
+  Published <%= @post.publish_date %> by <%= @post.user.username %> in <%= link_to @post.blog.title, @post.blog %>
+</div>
+
+<div class="post_body">
+  <%= sanitize simple_format(@post.body) %>
+</div>
+
