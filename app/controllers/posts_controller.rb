@@ -28,7 +28,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.blog_id = @blog.id
-    @post.user_id = :session[:user_id]
+    @post.user_id = session[:user_id]
 
     respond_to do |format|
       if @post.save

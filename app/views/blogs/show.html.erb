@@ -22,9 +22,9 @@
 
 
 
-<% @blog.posts.each do |post| %>
+<% @blog.posts.order(publish_date: :desc).each do |post| %>
 	<div class="post">
 	<div class="post_title"><%= link_to post.title, blog_post_path(@blog, post) %></div>
-	<div class="post_body"><%= post.body %></div>
+	<div class="post_body"><%= sanitize simple_format(post.body) %></div>
 	</div>
 <% end %>

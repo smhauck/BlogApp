@@ -2,7 +2,7 @@
 </div>
 
 <div class="post_title">
-  <%= @post.title %>
+  <%= @post.title %> <% if session[:user_id] %>(<%= link_to "Edit", edit_blog_post_path(@blog, @post) %>)<% end %>
 </div>
 
 <div class="post_meta">
