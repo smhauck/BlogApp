@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WBHauck</title>
+    <title><%= Blog_App::Application::SITE_TITLE %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,16 +10,9 @@
 
   <body>
 
-
-
-
-
-
-
-
 <div class="container">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/">WBHauck</a>
+  <a class="navbar-brand" href="/"><%= Blog_App::Application::SITE_NAV_BRAND %></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -54,7 +47,8 @@
 </div><!-- class="container" -->
 <div class="container footer">
 <footer>
-&copy; 2017 William B. Hauck
+<p>&copy; <%= Blog_App::Application::FOOTER_COPYRIGHT %></p>
+<p>Blog App Version <%= Blog_App::Application::VERSION %>.  Get the code at <%= link_to 'GitHub', "https://github.com/wbhauck/blog_app", target: "_blank" %></p>
 </footer>
 </div><!-- class="container" -->
 </body>
