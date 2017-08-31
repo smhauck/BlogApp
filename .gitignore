@@ -3,12 +3,16 @@
 /.config
 /coverage/
 /InstalledFiles
+/log
 /pkg/
 /spec/reports/
 /spec/examples.txt
 /test/tmp/
 /test/version_tmp/
 /tmp/
+
+# Secret token file
+/config/secrets.yml
 
 # Used by dotenv library to load environment variables.
 # .env
