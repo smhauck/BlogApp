@@ -2,7 +2,7 @@
 
 <h1>Posts</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Title</th>
@@ -11,22 +11,18 @@
       <th>Publish date</th>
       <th>Blog</th>
       <th>User</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.title %></td>
+        <td><%= link_to post.title, blog_post_path(@blog, post) %></td>
         <td><%= post.body %></td>
         <td><%= post.public %></td>
         <td><%= post.publish_date %></td>
         <td><%= link_to post.blog.title, post.blog %></td>
-        <td><%= post.user %></td>
-        <td><%= link_to 'Show', blog_post_path(@blog, post) %></td>
-        <td><%= link_to 'Edit', edit_blog_post_path(@blog, post) %></td>
-        <td><%= link_to 'Destroy', blog_post_path(@blog, post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= post.user.first_name %> <%= post.user.last_name %></td>
       </tr>
     <% end %>
   </tbody>
