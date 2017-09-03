@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= Blog_App::Application::SITE_TITLE %></title>
+    <title><%= BlogApp::Application::SITE_TITLE %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,14 +12,19 @@
 
 <div class="container">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/"><%= Blog_App::Application::SITE_NAV_BRAND %></a>
+  <a class="navbar-brand" href="/"><%= BlogApp::Application::SITE_NAV_BRAND %></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="http://resume.wbhauck.com">Resum&eacute;</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resum&eacute;</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="nav-link" href="http://files.wbhauck.com/wbhauck_resume.pdf" target="_blank">Resum&eacute; PDF</a>
+        <a class="nav-link" href="http://files.wbhauck.com/wbhauck_resume.docx" target="_blank">Resum&eacute; Word</a>
+	<a class="nav-link" href="http://files.wbhauck.com/wbhauck_resume.txt" target="_blank">Resum&eacute; Text</a>
+	</div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -30,9 +35,6 @@
           <%= link_to 'GitHub', 'https://github.com/wbhauck', class: "dropdown-item", target: '_blank' %>
           <%= link_to 'LinkedIn', 'https://www.linkedin.com/in/billhauck/', class: "dropdown-item", target: '_blank' %>
           <%= link_to 'Twitter', 'https://twitter.com/wbhauck', class: "dropdown-item", target: '_blank' %>
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </li>
       <li class="nav-item">
@@ -47,8 +49,8 @@
 </div><!-- class="container" -->
 <div class="container footer">
 <footer>
-<p>&copy; <%= Blog_App::Application::FOOTER_COPYRIGHT %></p>
-<p>Blog App Version <%= Blog_App::Application::VERSION %>.  Get the code at <%= link_to 'GitHub', "https://github.com/wbhauck/blog_app", target: "_blank" %></p>
+<p>&copy; <%= BlogApp::Application::FOOTER_COPYRIGHT %></p>
+<p>Blog App Version <%= BlogApp::Application::VERSION %>.  Get the code at <%= link_to 'GitHub', "https://github.com/wbhauck/blog_app", target: "_blank" %></p>
 </footer>
 </div><!-- class="container" -->
 </body>

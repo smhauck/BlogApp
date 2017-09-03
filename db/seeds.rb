@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+
+
+##################################################################
+#     Create the default administrator user                      #
+#     BE SURE TO CHANGE THE admin password and contact_email     #
+##################################################################
+User.create(username: "admin", password: "SECRET", password_confirmation: "SECRET", email_primary: "FIXME@example.com")
+
+
