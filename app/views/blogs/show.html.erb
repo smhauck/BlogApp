@@ -14,8 +14,8 @@
 
 <% @blog.posts.order(publish_date: :desc).each do |post| %>
 	<div class="post">
-	<div class="post_title"><%= link_to post.title, blog_post_path(@blog, post) %></div>
-	<div class="post_meta">Published <%= post.publish_date %></div>
-	<div class="post_body"><%= sanitize simple_format(truncate(post.body, escape: false, length: 400, separator: ' ')) %></div>
+		<div class="post_title"><%= link_to post.title, blog_post_path(@blog, post) %></div>
+		<div class="post_meta">Published <%= post.publish_date %></div>
+		<div class="post_body"><%= simple_format(sanitize(truncate(post.body, escape: false, length: 400, separator: ' '), attributes: %w(class href style target)), {}, sanitize: false) %></div>
 	</div>
 <% end %>
