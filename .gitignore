@@ -15,6 +15,7 @@
 /config/secrets.yml
 
 # Ignore encrypted secrets key file.
+config/secrets.yml.enc
 config/secrets.yml.key
 
 # Used by dotenv library to load environment variables.
