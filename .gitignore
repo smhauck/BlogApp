@@ -14,6 +14,9 @@
 # Secret token file
 /config/secrets.yml
 
+# Ignore encrypted secrets key file.
+config/secrets.yml.key
+
 # Used by dotenv library to load environment variables.
 # .env
 
@@ -52,7 +55,6 @@ build-iPhoneSimulator/
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
-
 
 .swp
 *~
