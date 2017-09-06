@@ -12,6 +12,8 @@
   Created by <%= @blog.user.username %>
 </div>
 
+<% if session[:user_id] == @blog.user_id %><div><%= link_to 'New Post', new_blog_post_path(@blog) %></div><% end %>
+
 <% @blog.posts.order(publish_date: :desc).each do |post| %>
 	<div class="post">
 		<div class="post_title"><%= link_to post.title, blog_post_path(@blog, post) %></div>
