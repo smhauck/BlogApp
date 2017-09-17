@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
 
-root 'blogs#show', {id: 1}
+  resources :tags
+  root 'blogs#show', {id: 1}
 
 
 
