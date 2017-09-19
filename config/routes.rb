@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :post_tags
   resources :tags
   root 'blogs#show', {id: 1}
 

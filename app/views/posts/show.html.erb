@@ -13,3 +13,22 @@
   <%= simple_format(sanitize( @post.body, attributes: %w(class href style target)), {}, sanitize: false) %>
 </div>
 
+
+<div>
+Tagged:
+<% len = @post.tags.length %>
+<% @post.tags.order(:name).each_with_index do |tag, index| %>
+        <%= link_to tag.name, tag -%><% if index < len - 1 %>,<% end %>
+<% end %>
+</div>
+
+<% if session[:user_id] %>
+<%= form_for @post_tag do |f| %>
+  <%= collection_select(:post_tag, :tag_id, Tag.all.order(:name), :id, :name, include_blank: true) %>
+  <%= f.hidden_field :post_id, value: @post.id %>
+  <input type="submit" value="Add Tag" />
+<% end %>
+<% end %>
+<br>
+<br>
+
