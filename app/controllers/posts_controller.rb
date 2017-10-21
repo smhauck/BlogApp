@@ -1,3 +1,21 @@
+# Copyright (C) 2017 William B. Hauck, http://www.wbhauck.com
+# 
+# This file is part of BlogApp.
+# 
+# BlogApp is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# BlogApp is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+# 
+# You should have received a copy of the GNU Affero General Public License
+# along with BlogApp.  If not, see <http://www.gnu.org/licenses/>.
+
+
 class PostsController < ApplicationController
   before_action :set_blog
   before_action :set_post, only: [:show, :edit, :update, :destroy]
@@ -71,7 +89,8 @@ class PostsController < ApplicationController
       @blog = Blog.find(params[:blog_id])
     end
     def set_post
-      @post = Post.find(params[:id])
+      # @post = Post.find(params[:id])
+      @post = @blog.posts.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,3 +1,21 @@
+# Copyright (C) 2017 William B. Hauck, http://www.wbhauck.com
+# 
+# This file is part of BlogApp.
+# 
+# BlogApp is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# BlogApp is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+# 
+# You should have received a copy of the GNU Affero General Public License
+# along with BlogApp.  If not, see <http://www.gnu.org/licenses/>.
+
+
 class PostTagsController < ApplicationController
   before_action :set_post_tag, only: [:show, :edit, :update, :destroy]
 
@@ -69,6 +87,6 @@ class PostTagsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_tag_params
-      params.require(:post_tag).permit(:post_id, :tag_id)
+      params.require(:post_tag).permit(:blog_id, :post_id, :tag_id)
     end
 end
