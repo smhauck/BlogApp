@@ -40,7 +40,7 @@ along with BlogApp.  If not, see <http://www.gnu.org/licenses/>.
 
 <% if session[:user_id] == @blog.user_id %><div><%= link_to 'New Post', new_blog_post_path(@blog) %></div><% end %>
 
-<% @blog.posts.order(publish_date: :desc).each do |post| %>
+<% @blog_public_posts.each do |post| %>
 	<div class="post">
 		<div class="post_title"><%= link_to post.title, blog_post_path(@blog, post) %></div>
 		<div class="post_meta">Published <%= post.publish_date %></div>

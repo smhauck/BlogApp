@@ -29,6 +29,7 @@ class BlogsController < ApplicationController
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    @blog_public_posts = @blog.posts.where(public: true).order(publish_date: :desc)
   end
 
   # GET /blogs/new
