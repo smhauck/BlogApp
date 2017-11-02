@@ -79,8 +79,8 @@ along with BlogApp.  If not, see <http://www.gnu.org/licenses/>.
               <%= User.find(session[:user_id]).username %>
               </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          	<%= link_to 'Account Info', user_path(session[:user_id]), class: "dropdown-item", target: '_blank' %>
-          	<%= link_to 'Logout', logout_path, class: "dropdown-item", target: '_blank' %>
+          	<%= link_to 'Account Info', user_path(session[:user_id]), class: "dropdown-item" %>
+          	<%= link_to 'Logout', logout_path, class: "dropdown-item" %>
         </div>
             </li>
           </ul>
