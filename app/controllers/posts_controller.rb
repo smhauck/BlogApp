@@ -1,4 +1,4 @@
-# Copyright (C) 2017 William B. Hauck, http://www.wbhauck.com
+# Copyright (C) 2018 William B. Hauck, http://www.wbhauck.com
 # 
 # This file is part of BlogApp.
 # 
@@ -19,7 +19,8 @@
 class PostsController < ApplicationController
   before_action :set_blog
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authorize, only: [:index, :show]
+#  skip_before_action :authorize, only: [:index, :show]
+  before_action :authenticate_user!, only: [:new, :edit, :update]
 
   # GET /posts
   # GET /posts.json

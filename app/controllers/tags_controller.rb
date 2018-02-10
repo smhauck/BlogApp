@@ -1,4 +1,4 @@
-# Copyright (C) 2017 William B. Hauck, http://www.wbhauck.com
+# Copyright (C) 2018 William B. Hauck, http://www.wbhauck.com
 # 
 # This file is part of BlogApp.
 # 
@@ -18,7 +18,9 @@
 
 class TagsController < ApplicationController
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authorize, only: [:index, :show]
+#  skip_before_action :authorize, only: [:index, :show]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update]
+
 
   # GET /tags
   # GET /tags.json

@@ -1,4 +1,4 @@
-# Copyright (C) 2017 William B. Hauck, http://www.wbhauck.com
+# Copyright (C) 2018 William B. Hauck, http://www.wbhauck.com
 # 
 # This file is part of BlogApp.
 # 
@@ -18,8 +18,9 @@
 
 class UsersController < ApplicationController
   # skip_before_action :authorize, only: [:index, :show, :new, :create, :edit, :update]
-  skip_before_action :authorize, only: [:index, :show]
+  # skip_before_action :authorize, only: [:index, :show]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update]
   
 
   # GET /users
