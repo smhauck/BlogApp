@@ -36,7 +36,7 @@ along with BlogApp.  If not, see <http://www.gnu.org/licenses/>.
 </div>
 
 <div class="post_body">
-  <%= simple_format(sanitize( @post.body, attributes: %w(class href style target)), {}, sanitize: false) %>
+  <%= simple_format(sanitize( @post.body, tags: %w(a h1 h2 h3 h4 h5 table thead tbody tr th td), attributes: %w(class href style target)), {}, sanitize: false) %>
 </div>
 
 

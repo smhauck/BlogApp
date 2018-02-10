@@ -2,7 +2,7 @@
 =begin
 %>
 
-Copyright (C) 2017 William B. Hauck, http://www.wbhauck.com
+Copyright (C) 2018 William B. Hauck, http://www.wbhauck.com
 
 This file is part of BlogApp.
 
@@ -36,115 +36,74 @@ along with BlogApp.  If not, see <http://www.gnu.org/licenses/>.
 
   <body>
 
-<% if session[:user_id] %>
 
-<div class="container">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/"><%= BlogApp::Application::SITE_NAV_BRAND %></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resum&eacute;</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="nav-link" href="http://files.wbhauck.com/wbhauck_resume.pdf" target="_blank">Resum&eacute; PDF</a>
-        <a class="nav-link" href="http://files.wbhauck.com/wbhauck_resume.docx" target="_blank">Resum&eacute; Word</a>
-	<a class="nav-link" href="http://files.wbhauck.com/wbhauck_resume.txt" target="_blank">Resum&eacute; Text</a>
-	</div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Connect
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <%= mail_to 'wbhauck@yahoo.com', 'Email', class: "dropdown-item" %>
-          <%= link_to 'GitHub', 'https://github.com/wbhauck', class: "dropdown-item", target: '_blank' %>
-          <%= link_to 'LinkedIn', 'https://www.linkedin.com/in/wbhauck/', class: "dropdown-item", target: '_blank' %>
-          <%= link_to 'Twitter', 'https://twitter.com/wbhauck', class: "dropdown-item", target: '_blank' %>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/tags">Tags</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/about">About</a>
-      </li>
+  <div class="container">
+    <a class="navbar-brand" href="/"><%= BlogApp::Application::SITE_NAV_BRAND %></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resum&eacute;</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="nav-link" href="http://files.wbhauck.com/wbhauck_resume.pdf" target="_blank">Resum&eacute; PDF</a>
+          <a class="nav-link" href="http://files.wbhauck.com/wbhauck_resume.docx" target="_blank">Resum&eacute; Word</a>
+  	<a class="nav-link" href="http://files.wbhauck.com/wbhauck_resume.txt" target="_blank">Resum&eacute; Text</a>
+  	</div>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Project Useful', 'http://www.projectuseful.org', class: "nav-link", target: '_blank' %>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Connect
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <%= mail_to 'wbhauck@yahoo.com', 'Email', class: "dropdown-item" %>
+            <%= link_to 'GitHub', 'https://github.com/wbhauck', class: "dropdown-item", target: '_blank' %>
+            <%= link_to 'LinkedIn', 'https://www.linkedin.com/in/wbhauck/', class: "dropdown-item", target: '_blank' %>
+            <%= link_to 'Twitter', 'https://twitter.com/wbhauck', class: "dropdown-item", target: '_blank' %>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tags">Tags</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+      </ul>
+    </div>
+  <div class="container">
+    <ul class="navbar-nav justify-content-end">
+      <% if user_signed_in? %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %></a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <%= link_to "Account Info", user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </li>
+      <% else %>
+        <%= link_to "Log In", new_user_session_path, class: "nav-link" %>
+      <% end %>
     </ul>
-
-         <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= User.find(session[:user_id]).username %>
-              </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          	<%= link_to 'Account Info', user_path(session[:user_id]), class: "dropdown-item" %>
-          	<%= link_to 'Logout', logout_path, class: "dropdown-item" %>
-        </div>
-            </li>
-          </ul>
-</div>
+  </div><!-- class="container" -->
+  </div><!-- class="container" -->
 </nav>
-</div><!-- class="container" -->
+
 <div class="container">
 <%= yield %>
 </div><!-- class="container" -->
 
-
-
-
-<% else %>
-
-
-<div class="container">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/"><%= BlogApp::Application::SITE_NAV_BRAND %></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resum&eacute;</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="nav-link" href="http://files.wbhauck.com/wbhauck_resume.pdf" target="_blank">Resum&eacute; PDF</a>
-        <a class="nav-link" href="http://files.wbhauck.com/wbhauck_resume.docx" target="_blank">Resum&eacute; Word</a>
-	<a class="nav-link" href="http://files.wbhauck.com/wbhauck_resume.txt" target="_blank">Resum&eacute; Text</a>
-	</div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Connect
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <%= mail_to 'wbhauck@yahoo.com', 'Email', class: "dropdown-item" %>
-          <%= link_to 'GitHub', 'https://github.com/wbhauck', class: "dropdown-item", target: '_blank' %>
-          <%= link_to 'LinkedIn', 'https://www.linkedin.com/in/wbhauck/', class: "dropdown-item", target: '_blank' %>
-          <%= link_to 'Twitter', 'https://twitter.com/wbhauck', class: "dropdown-item", target: '_blank' %>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/tags">Tags</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/about">About</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-</div><!-- class="container" -->
-<div class="container">
-<%= yield %>
-</div><!-- class="container" -->
-
-<% end %>
-
-<div class="container footer">
 <footer>
+<div class="container footer">
 <p>&copy; <%= BlogApp::Application::FOOTER_COPYRIGHT %></p>
 <p>Blog App Version <%= BlogApp::Application::VERSION %>.  Get the code at <%= link_to 'GitHub', "https://github.com/wbhauck/BlogApp", target: "_blank" %></p>
-</footer>
 </div><!-- class="container" -->
+</footer>
+
+
 </body>
 </html>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  devise_for :users
+  resources :users, :only => [:show]
   resources :post_tags
   resources :tags
   root 'blogs#show', {id: 1}
@@ -10,15 +12,15 @@ Rails.application.routes.draw do
   resources :blogs do
     resources :posts
   end
-  resources :users
+  # resources :users
   get 'welcome/index'
 
 
-  controller :sessions do
-    get 'login' => :new
-    post 'login' => :create
-    get 'logout' => :destroy
-  end
+#  controller :sessions do
+#    get 'login' => :new
+#    post 'login' => :create
+#    get 'logout' => :destroy
+#  end
 
 
   # Point /about to the first post of the first blog

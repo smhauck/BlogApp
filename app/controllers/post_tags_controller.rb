@@ -17,7 +17,7 @@
 
 
 class PostTagsController < ApplicationController
-  before_action :set_post_tag, only: [:show, :edit, :update, :destroy]
+  before_action :set_post_tag, only: [:show, :edit, :update, :create, :destroy]
 
   # GET /post_tags
   # GET /post_tags.json
