@@ -7,6 +7,7 @@ BlogApp is the application running my personal website, www.wbhauck.com. Since m
 * Ruby 2.4
 * Rails 5.1
 * SQLite
+* Bootstrap 4
 * Sendmail (for password reset emails)
 
 
