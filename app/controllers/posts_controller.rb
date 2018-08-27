@@ -48,7 +48,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.blog_id = @blog.id
-    @post.user_id = session[:user_id]
+    @post.user_id = current_user.id
 
     respond_to do |format|
       if @post.save
@@ -96,6 +96,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, :public, :publish_date, :blog_id, :user_id)
+      params.require(:post).permit(:title, :body, :public, :publish_date, :blog_id)
     end
 end
