@@ -39,8 +39,7 @@ gem 'jquery-rails'
 
 gem 'simple_form', '~> 3.5'
 gem 'devise', '~> 4.3'
-
-
+gem 'sprockets', '~> 3.7.2'
 
 
 # Use Capistrano for deployment
