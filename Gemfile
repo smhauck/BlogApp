@@ -41,6 +41,8 @@ gem 'simple_form', '~> 3.5'
 gem 'devise', '~> 4.3'
 gem 'sprockets', '~> 3.7.2'
 
+gem 'ffi', '~> 1.9', '>= 1.9.25'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
